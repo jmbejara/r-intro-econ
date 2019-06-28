@@ -1,0 +1,335 @@
+% Copyright 2007 by Till Tantau. Modified by Winnie van Dijk.
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+
+
+
+%%% PACKAGES %%%
+\usepackage[english]{babel}
+%\usepackage[latin1]{inputenc}
+\usepackage{url}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage[us,12hr]{datetime}
+\usepackage{enumerate}
+\usepackage{caption}
+\usepackage{soul}
+\usepackage{comment}
+
+
+%%% SET FONT %%%
+\usepackage[default,scale=0.8]{sourcesanspro}
+\setlength{\parindent}{0pt}
+
+
+%%% CUSTOM COMMANDS %%%
+\def\ci{\perp\!\!\!\perp}
+\def\nci{\perp\!\!\!\!\!\!\diagup\!\!\!\!\!\!\perp}
+\newcommand{\tab}{\hspace{.4cm}}
+\newcommand{\ind}{1\hspace{-1.3mm}{1}}
+\newcommand{\lra}{\text{ }\Leftrightarrow\text{ }}
+\newcommand{\ra}{\text{ }\Rightarrow\text{ }}
+\newcommand{\la}{\text{ }\Leftarrow\text{ }}
+\newcommand{\veps}{\varepsilon}
+\newcommand{\rl}{\mathbb{R}}
+\newcommand{\bs}{\boldsymbol}
+\newcommand{\ex}[1]{\mathbb{E} \left[ #1 \right]}
+\newcommand{\pr}[1]{\mathbb{P} \left( #1 \right)}
+\newcommand{\var}[1]{\mathbb{V}\text{ar} \left[ #1 \right]}
+\newcommand{\cov}[1]{\mathbb{C}{ov} \left[ #1 \right]}
+\newcommand{\corr}[1]{\mathbb{C}{orr} \left[ #1 \right]}
+\newcommand{\spc}{\text{ }}
+\newcommand{\textts}[1]{\texttt{\scriptsize #1}}
+
+
+%%% DEFINE COLORS FOR THEME %%%
+\definecolor{beamer@myRed}{RGB}{204,2,2}
+\definecolor{beamer@myBlue}{RGB}{65,106,234}
+\definecolor{beamer@myLinkBlue}{RGB}{78,166,220}
+\definecolor{beamer@myGreen}{RGB}{10,158,73}
+\definecolor{beamer@myLightGray}{gray}{.85}
+\definecolor{beamer@myDarkGray}{gray}{.15}
+\definecolor{beamer@UCRed}{RGB}{118,1,0}
+\definecolor{beamer@UCLightGray}{RGB}{237,237,237}
+\definecolor{beamer@UCMediumGray}{RGB}{125,123,123}
+\definecolor{beamer@UCDarkerGray}{RGB}{61,60,60}
+\definecolor{beamer@UCDarkGray}{RGB}{50,50,50}
+\definecolor{beamer@UCGold}{RGB}{168,139,96}
+\definecolor{beamer@UCGreen}{RGB}{138,144,69}
+\definecolor{beamer@UCBlue}{RGB}{62,118,154}
+\definecolor{beamer@UCOrange}{RGB}{183,102,57}
+\definecolor{beamer@UCBlueGray}{RGB}{127,156,157}
+\definecolor{beamer@UCDarkGreen}{RGB}{71,74,53}
+
+
+%% SET ITEMIZE SYMBOLS %%
+\setbeamertemplate{items}[triangle]
+
+
+%% SET MARGINS OF CONTENTS %%
+\setbeamersize{text margin left=17pt,text margin right=17pt}
+
+
+%% TURN OFF NAVIGATION SYMBOLS %%
+\setbeamertemplate{navigation symbols}{}
+
+
+%% TITLE PAGE SETUP %%
+	\setbeamercolor{title}{fg=beamer@myBlue}
+	\setbeamerfont{title}{size=\LARGE}
+	\setbeamercolor{author}{fg=beamer@UCDarkGray}
+	\setbeamerfont{date}{size=\small}
+	\setbeamerfont{institute}{size=\small}
+
+	\setbeamertemplate{title page}{
+		\vskip 1.2cm
+		\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par
+		\vskip8pt
+		\hrule height 1.5pt
+		\vskip9pt
+		\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par
+		\vskip75pt
+		\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par
+		\bigskip
+		\usebeamerfont{institute}\insertinstitute\par
+		\bigskip
+		\usebeamerfont{date}\insertdate\par
+	}
+
+
+%% SET COLOR THEME %%%
+\usecolortheme[RGB={137,113,225}]{structure}
+
+
+%% FRAME TITLES %%
+\setbeamercolor{titlelike}{parent=structure}
+\setbeamercolor{frametitle}{fg=beamer@myBlue}
+\setbeamerfont{frametitle}{size=\Large}
+\setbeamertemplate{frametitle}
+{
+	\vskip1.5ex
+	\hskip-.45cm
+	\insertframetitle
+	\vspace{.15cm}
+}
+
+
+%% SET FRAME COLORS %%
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{normal text}{bg=white,fg=beamer@UCDarkGray}
+
+
+%% SET FOOTLINE %%
+\setbeamertemplate{footline}{
+
+	\vspace{.6cm}
+
+	% don't include on first frame
+	\ifnum\c@framenumber>1
+		\vskip-37pt
+		\usebeamercolor{beamer color}
+		
+		\colorbox{white}{
+		\color{beamer@UCMediumGray}
+			\parbox{\paperwidth}{
+			\hfill
+			\insertframenumber / \inserttotalframenumber ~~~~~~~~~
+			}
+			\vspace{0.2cm}
+		}
+	
+		\colorbox{beamer@UCLightGray}{
+		\color{beamer@UCMediumGray}
+			\parbox{.33\paperwidth}{
+			~
+			\insertshortauthor, \insertshortinstitute
+			\hfill
+			}
+			\parbox{.3333\paperwidth}{
+			\centering
+			\insertshorttitle ~ \insertshortsubtitle
+			}
+			\parbox{.33\paperwidth}{
+			\hfill
+			Updated: \number\month / \number\day / \number\year ~ \currenttime ~~~~~~
+			}
+			\vspace{0.2cm}
+		}
+	\fi
+
+}
+
+\setbeamerfont{footline}{size=\fontsize{6}{6} \selectfont}
+
+
+%% SET HEADLINE %%
+\setbeamertemplate{headline}{
+
+	% don't include on first frame
+	\ifnum\c@framenumber>1
+		\leavevmode
+		\vskip-1pt
+		\usebeamercolor{beamer color}
+		\colorbox{beamer@UCLightGray}{
+			\color{beamer@UCMediumGray}
+			\parbox{\paperwidth}{ 
+			\insertsectionnavigationhorizontal{\paperwidth}{\hskip0pt plus1filll}{}
+			\vskip-1pt
+			}
+		}
+	\fi
+
+}
+\setbeamerfont{headline}{size=\fontsize{6}{6} \selectfont}
+\setbeamercolor{section in head/foot}{bg=beamer@UCLightGray,fg=beamer@UCDarkerGray}
+
+
+%% SET ALERTED TEXT COLOR %%
+\setbeamercolor{alerted text}{fg=beamer@myRed}
+\setbeamerfont{alerted text}{series=\bfseries}
+
+
+%% SET BLOCK COLORS %%
+\setbeamercolor{block title}{bg=white,fg=beamer@myBlue!90!white}
+\setbeamercolor{block title example}{bg=white,fg=beamer@UCGold}
+\setbeamercolor{block title alerted}{bg=white,fg=beamer@UCGold}
+
+
+%% LINKS COLORS %%
+\hypersetup{colorlinks,linkcolor=,urlcolor=beamer@myLinkBlue}
+
+
+%% CUSTOM THEOREM ENVIRONMENTS
+%Definitions
+\newcounter{defcounter}
+\makeatletter
+\def\th@mystyle{
+    \normalfont
+    \setbeamercolor{block title example}{bg=beamer@UCDarkGray!85,fg=white}
+    \setbeamercolor{block body example}{bg=beamer@UCLightGray,fg=beamer@UCDarkerGray}
+    \setbeamercolor{itemize item}{fg=beamer@UCMediumGray}
+    \setbeamercolor{itemize subitem}{fg=beamer@UCMediumGray}
+    \setbeamercolor{itemize subsubitem}{fg=beamer@UCMediumGray}
+    \setbeamercolor{enumerate item}{fg=beamer@UCMediumGray}
+    \setbeamercolor{enumerate subitem}{fg=beamer@UCMediumGray}
+    \setbeamercolor{enumerate subsubitem}{fg=beamer@UCMediumGray}
+    \def\inserttheoremblockenv{exampleblock}
+ }
+\makeatother
+\theoremstyle{mystyle}
+\refstepcounter{defcounter}
+\numberwithin{defcounter}{lecture}
+\newtheorem*{mydef}{\textbf{Definition \thedefcounter}}
+
+%Theorems
+\newcounter{thmcounter}
+\makeatletter
+\def\th@mystyl{
+    \normalfont
+    \setbeamercolor{block title example}{bg=beamer@UCDarkGray!85,fg=white}
+    \setbeamercolor{block body example}{bg=beamer@UCLightGray,fg=beamer@UCDarkerGray}
+    \setbeamercolor{itemize item}{fg=beamer@UCMediumGray}
+    \setbeamercolor{itemize subitem}{fg=beamer@UCMediumGray}
+    \setbeamercolor{itemize subsubitem}{fg=beamer@UCMediumGray}
+    \setbeamercolor{enumerate item}{fg=beamer@UCMediumGray}
+    \setbeamercolor{enumerate subitem}{fg=beamer@UCMediumGray}
+    \setbeamercolor{enumerate subsubitem}{fg=beamer@UCMediumGray}
+    \def\inserttheoremblockenv{exampleblock}
+ }
+\makeatother
+\theoremstyle{mystyl}
+\refstepcounter{thmcounter}
+\numberwithin{thmcounter}{lecture}
+\newtheorem*{mythm}{\textbf{Theorem \thethmcounter}}
+\newtheorem*{myprf}{\textbf{Proof}}
+
+%Examples
+\newcounter{exmcounter}
+\makeatletter
+\def\th@mysty{
+    \normalfont
+    \setbeamercolor{block title example}{bg=beamer@UCDarkGray!85,fg=white}
+    \setbeamercolor{block body example}{bg=beamer@UCLightGray,fg=beamer@UCDarkerGray}
+    \setbeamercolor{itemize item}{fg=beamer@UCMediumGray}
+    \setbeamercolor{itemize subitem}{fg=beamer@UCMediumGray}
+    \setbeamercolor{itemize subsubitem}{fg=beamer@UCMediumGray}
+    \setbeamercolor{enumerate item}{fg=beamer@UCMediumGray}
+    \setbeamercolor{enumerate subitem}{fg=beamer@UCMediumGray}
+    \setbeamercolor{enumerate subsubitem}{fg=beamer@UCMediumGray}
+    \def\inserttheoremblockenv{exampleblock}
+ }
+\makeatother
+\theoremstyle{mysty}
+\refstepcounter{exmcounter}
+\numberwithin{exmcounter}{lecture}
+\newtheorem*{myexm}{\textbf{Example \theexmcounter}}
+
+%Exercises
+\newcounter{exccounter}
+\makeatletter
+\def\th@myst{
+    \normalfont
+    \setbeamercolor{block title example}{bg=beamer@UCDarkGray!85,fg=white}
+    \setbeamercolor{block body example}{bg=beamer@UCLightGray,fg=beamer@UCDarkerGray}
+    \setbeamercolor{itemize item}{fg=beamer@UCMediumGray}
+    \setbeamercolor{itemize subitem}{fg=beamer@UCMediumGray}
+    \setbeamercolor{itemize subsubitem}{fg=beamer@UCMediumGray}
+    \setbeamercolor{enumerate item}{fg=beamer@UCMediumGray}
+    \setbeamercolor{enumerate subitem}{fg=beamer@UCMediumGray}
+    \setbeamercolor{enumerate subsubitem}{fg=beamer@UCMediumGray}
+    \def\inserttheoremblockenv{exampleblock}
+ }
+\makeatother
+\theoremstyle{myst}
+\refstepcounter{exccounter}
+\numberwithin{exccounter}{lecture}
+\newtheorem*{myexc}{\textbf{Exercise \theexccounter}}
+
+%Continued examples (when the example doesn't fit on one slide)
+\makeatletter
+\def\th@mystycont{
+    \normalfont
+    \setbeamercolor{block title example}{bg=beamer@UCDarkGray!85,fg=white}
+    \setbeamercolor{block body example}{bg=beamer@UCLightGray,fg=beamer@UCDarkerGray}
+    \setbeamercolor{itemize item}{fg=beamer@UCMediumGray}
+    \setbeamercolor{itemize subitem}{fg=beamer@UCMediumGray}
+    \setbeamercolor{itemize subsubitem}{fg=beamer@UCMediumGray}
+    \setbeamercolor{enumerate item}{fg=beamer@UCMediumGray}
+    \setbeamercolor{enumerate subitem}{fg=beamer@UCMediumGray}
+    \setbeamercolor{enumerate subsubitem}{fg=beamer@UCMediumGray}
+    \def\inserttheoremblockenv{exampleblock}
+ }
+\makeatother
+\theoremstyle{mystycont}
+\newtheorem*{myexmcont}{\textbf{Example \theexmcounter, continued}}
+
+%Continued exercises
+\makeatletter
+\def\th@mystylcont{
+    \normalfont
+    \setbeamercolor{block title example}{bg=beamer@UCDarkGray!85,fg=white}
+    \setbeamercolor{block body example}{bg=beamer@UCLightGray,fg=beamer@UCDarkerGray}
+    \setbeamercolor{itemize item}{fg=beamer@UCMediumGray}
+    \setbeamercolor{itemize subitem}{fg=beamer@UCMediumGray}
+    \setbeamercolor{itemize subsubitem}{fg=beamer@UCMediumGray}
+    \setbeamercolor{enumerate item}{fg=beamer@UCMediumGray}
+    \setbeamercolor{enumerate subitem}{fg=beamer@UCMediumGray}
+    \setbeamercolor{enumerate subsubitem}{fg=beamer@UCMediumGray}
+    \def\inserttheoremblockenv{exampleblock}
+ }
+\makeatother
+\theoremstyle{mystylcont}
+\newtheorem*{myexccont}{\textbf{Exercise \theexccounter, continued}}
+
+
+%% SETUP CAPTIONS %%
+\setbeamertemplate{caption}[numbered]
+\numberwithin{figure}{lecture}
+\numberwithin{table}{lecture}
+\setbeamerfont{caption}{size=\scriptsize}
