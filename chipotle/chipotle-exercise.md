@@ -1,8 +1,16 @@
 # Instructions
 
-A blank code or markup cell will be left after each exercise for you to fill in with your solution.
+A blank code or markup cell will be left after each exercise for you to fill in with your solution. Please use packages from the *Tidyverse* to complete
+these exercises. 
 
 This part of the HW is based on data from an article from the New York Times's blog, *The Upshot*. In an article titled, <a href="https://www.nytimes.com/interactive/2015/02/17/upshot/what-do-people-actually-order-at-chipotle.html"> "At Chipotle, How Many Calories Do People Really Eat?" </a>, the authors use data from about 1,800 Chipotle orders made on GrubHub. The data from this article is available here on GitHub: https://github.com/TheUpshot/chipotle . In this part of the HW, we use the data that they provide to practice working with real data. This assignment will give us some practice on manipulating, summarizing, and visualizing data with Pandas and Python.
+
+**Helpful Resources:**
+
+Here are some resources to help
+
+  * [Data wrangling with `dplyr`](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+  * [Reading in data](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf)
 
 
 ## Description of the Data
