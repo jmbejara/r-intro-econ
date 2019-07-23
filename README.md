@@ -10,6 +10,15 @@ Here I'm collecting some useful resources for learning more.
 
 ## R Basics
 
+Good books for beginners
+
+  - [*R for Data Science: Import, Tidy, Transform, Visualize, and Model Data*](https://www.amazon.com/Data-Science-Transform-Visualize-Model/dp/1491910399/)
+  - [An Introduction to Statistical Learning: with Applications in R](https://www.amazon.com/Introduction-Statistical-Learning-Applications-Statistics/dp/1461471370/). This book is a little more advanced, but is considered a classic for those interested in machine learning.
+  - For time series analysis, consider [Introductory Time Series with R](https://www.amazon.com/dp/0387886974) and [Practical Time Series Forecasting with R: A Hands-On Guide](https://www.amazon.com/dp/0997847913)
+
+
+Other Resources
+
  - [Basic R Data Types](https://www.statmethods.net/input/datatypes.html)
  - There is a book called ["Applied Econometrics in R"](https://www.springer.com/us/book/9780387773162) that is very helpful. It also has an [R package](https://cran.r-project.org/web/packages/AER/) containing code and data to go along with the book.
  - Useful [tutorials on econometric procedures in R and Stata](https://dss.princeton.edu/training/). In particular, there is a Difference-in-Difference tutorial, Fixed/Random Effects, Logit, Time Series
